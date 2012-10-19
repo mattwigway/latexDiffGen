@@ -30,6 +30,7 @@
 INPUT=$1
 OUTPUT=$2
 
+# http://stackoverflow.com/questions/1291941
 if [ $# -ge 3 ]; then
     FROM=$3
 
@@ -49,6 +50,7 @@ else
 fi
 
 # Normalize the diff stats to hashes
+# http://stackoverflow.com/questions/424071
 FROM=`git show --format=format:"%H" --name-only $FROM | head -n 1`
 TO=`git show --format=format:"%H" --name-only $TO | head -n 1`
 
@@ -59,6 +61,7 @@ OLDFILE=`mktemp`
 NEWFILE=`mktemp`
 
 # store the relevant files
+# http://stackoverflow.com/questions/888414
 git show ${FROM}:${INPUT} > ${OLDFILE}
 git show ${TO}:${INPUT} > ${NEWFILE}
 
